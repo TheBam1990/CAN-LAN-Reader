@@ -1,0 +1,5 @@
+Windows x64 ControlCAN SDK library from Waveshare USB-CAN-B official secondary development package.
+Source: https://files.waveshare.com/wiki/USB-CAN-B/Demo/lib/Secondary-lib-dll.zip
+Documentation: https://www.waveshare.com/wiki/USB-CAN-B
+Manufacturer library; not covered by the application license.
+USB driver must be installed separately.

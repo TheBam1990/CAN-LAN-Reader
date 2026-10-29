@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv*/
+build/
+dist/
+*.egg-info/
+CAN-LAN-Reader-Log.txt
+settings.json
+backup-*/
+CanLanReader/
+CanLanReader.Core/
+CanLanReader.Tests/
+*.zip
+SHA256SUMS.txt
