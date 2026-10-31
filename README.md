@@ -1,4 +1,4 @@
-# CAN LAN / USB Reader 1.1.1
+# CAN LAN / USB Reader 1.2.0
 
 Windows-Programm zum lesenden Empfang von Classic-CAN-Telegrammen über
 Waveshare-CAN/LAN oder CANalyst-II-kompatible USB-Adapter (ControlCAN).
@@ -139,4 +139,12 @@ python scripts/package_release.py
 makensis installer.nsi
 ```
 
-Das Skript erzeugt Portable-ZIP, Quellpaket, Screenshots im Programmpaket und Prüfsummen unter `dist/release-1.1.1`. Den anschließend gebauten Installer aus `dist/CAN-LAN-Reader-Setup.exe` zusätzlich in diesen Release-Ordner kopieren und dessen SHA-256-Prüfsumme ergänzen. Die Herstellerbibliothek unter `vendor/canalyst` bleibt eine Komponente des Herstellers; die Herkunft ist in `SOURCE.txt` dokumentiert.
+Das Skript erzeugt Portable-ZIP, Quellpaket, Screenshots im Programmpaket und Prüfsummen unter `dist/release-1.2.0`. Den anschließend gebauten Installer aus `dist/CAN-LAN-Reader-Setup.exe` zusätzlich in diesen Release-Ordner kopieren und dessen SHA-256-Prüfsumme ergänzen. Die Herstellerbibliothek unter `vendor/canalyst` bleibt eine Komponente des Herstellers; die Herkunft ist in `SOURCE.txt` dokumentiert.
+
+## Sprache / Language / 语言 (Version 1.2.0)
+
+Oben im Hauptfenster unter **Sprache / Language / 语言** zwischen Deutsch, English und 简体中文 (vereinfachtes Chinesisch) wählen. Die Oberfläche einschließlich Auswertungsdialogen und internen Fehlermeldungen wechselt sofort. Die Auswahl bleibt im Benutzerprofil unter `%APPDATA%\CAN-LAN-Reader\settings.json` gespeichert. Empfang und Auswertungen laufen beim Umschalten weiter. Eigene Feldnamen, Einheiten und Protokollwerte werden unverändert übernommen. CSV-Spaltenüberschriften entsprechen der ausgewählten Sprache; das Rohtelegramm-Log behält seine festen deutschen Spaltennamen. Meldungen von Windows/Treibern bleiben im Original.
+
+Choose **English** in the language selector at the top. The selection is saved automatically; no restart is needed. Your field names and CAN data are preserved.
+
+在窗口顶部的语言选项中选择 **简体中文**。设置会自动保存，无需重新启动。自定义字段名称和 CAN 数据保持不变。

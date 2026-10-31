@@ -7,10 +7,10 @@ InstallDir "$LOCALAPPDATA\Programs\CAN-LAN-Reader"
 InstallDirRegKey HKCU "Software\TheBam1990\CAN-LAN-Reader" "InstallDir"
 RequestExecutionLevel user
 SetCompressor /SOLID lzma
-VIProductVersion "1.1.1.0"
+VIProductVersion "1.2.0.0"
 VIAddVersionKey /LANG=1031 "ProductName" "CAN LAN / USB Reader"
 VIAddVersionKey /LANG=1031 "FileDescription" "CAN LAN / USB Reader Installation"
-VIAddVersionKey /LANG=1031 "FileVersion" "1.1.1.0"
+VIAddVersionKey /LANG=1031 "FileVersion" "1.2.0.0"
 VIAddVersionKey /LANG=1031 "LegalCopyright" "TheBam1990"
 !define MUI_ABORTWARNING
 !insertmacro MUI_PAGE_WELCOME
@@ -34,7 +34,7 @@ Section "CAN LAN / USB Reader"
  CreateShortcut "$DESKTOP\CAN LAN USB Reader.lnk" "$INSTDIR\CAN-LAN-Reader.exe"
  WriteRegStr HKCU "Software\TheBam1990\CAN-LAN-Reader" "InstallDir" "$INSTDIR"
  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\CAN-LAN-Reader" "DisplayName" "CAN LAN / USB Reader"
- WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\CAN-LAN-Reader" "DisplayVersion" "1.1.1"
+ WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\CAN-LAN-Reader" "DisplayVersion" "1.2.0"
  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\CAN-LAN-Reader" "Publisher" "TheBam1990"
  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\CAN-LAN-Reader" "DisplayIcon" "$INSTDIR\CAN-LAN-Reader.exe"
  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\CAN-LAN-Reader" "UninstallString" '"$INSTDIR\Uninstall.exe"'

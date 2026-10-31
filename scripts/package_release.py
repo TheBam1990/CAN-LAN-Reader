@@ -2,7 +2,7 @@
 from pathlib import Path
 import datetime, hashlib, json, shutil, zipfile
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = '1.1.1'
+VERSION = '1.2.0'
 bundle = ROOT/'dist/CAN-LAN-Reader'
 release = ROOT/'dist'/f'release-{VERSION}'
 release.mkdir(parents=True, exist_ok=True)
@@ -10,7 +10,7 @@ release.mkdir(parents=True, exist_ok=True)
 shutil.copyfile(ROOT/'README.md', bundle/'README.md')
 shutil.copytree(ROOT/'docs', bundle/'docs', dirs_exist_ok=True)
 (bundle/'START-HIER.txt').write_text('CAN LAN / USB Reader '+VERSION+'\n\nCAN-LAN-Reader.exe starten. Der Ordner _internal muss daneben bleiben.\nDie CANalyst-II-Bibliothek ist integriert. Windows-USB-Treiber bei Bedarf separat installieren.\nKanal und CAN-Bitrate passend einstellen. Empfang erfolgt nur lesend.\nDie README beschreibt das Anlegen von Auswertungen mit Screenshots.\n',encoding='utf-8')
-files = [ROOT/name for name in ['.gitignore','.gitattributes','app.py','protocol.py','decoding.py','canalyst.py','CAN-LAN-Reader.spec','requirements-build.txt','windows-version-info.txt','build-windows.bat','README.md','test_parser.py','installer.nsi']]
+files = [ROOT/name for name in ['.gitignore','.gitattributes','app.py','i18n.py','protocol.py','decoding.py','canalyst.py','CAN-LAN-Reader.spec','requirements-build.txt','windows-version-info.txt','build-windows.bat','README.md','test_parser.py','installer.nsi']]
 for folder in ['tests','docs','vendor','scripts']:
  files.extend(p for p in (ROOT/folder).rglob('*') if p.is_file() and '__pycache__' not in p.parts)
 meta={'version':VERSION,'architecture':'Windows x64','packaging':'onedir','upx':False,'authenticode_signed':False,'physical_usb_receive_test':False,'timestamp_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'sources':{p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in files}}

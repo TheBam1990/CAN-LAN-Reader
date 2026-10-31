@@ -70,3 +70,28 @@ class GuiTests(unittest.TestCase):
         thread.join(timeout=1)
         self.assertEqual(errors, []); self.assertEqual(received, [b'']); self.assertEqual(self.app.frames, 1)
         row = next(iter(self.app.rows.values())); self.assertEqual(row['id'], '0x00004210')
+
+    def test_language_switch_preserves_data_and_connection_state(self):
+        from i18n import LANGUAGES
+        self.app.signals = [Signal('Meine Spannung', 0x123, factor='0.1', unit='V')]
+        frame = CanFrame(datetime.now(), 0x123, False, False, 2, bytes.fromhex('34 12'))
+        self.app.add_frame(frame); self.app.apply_filters(); self.app.render_signals()
+        self.app.active = True
+        for language, heading in [('en', 'Calculated value'), ('zh_CN', '计算值'), ('de', 'Berechneter Wert')]:
+            self.app.language_choice.set(LANGUAGES[language]); self.app.change_language()
+            self.assertEqual(self.app.signal_tree.heading('result', 'text'), heading)
+            self.assertEqual(self.app.frames, 1)
+            self.assertEqual(self.app.signal_values[0]['result'], '466')
+            self.assertEqual(self.app.signals[0].name, 'Meine Spannung')
+            self.assertEqual(str(self.app.source_box['state']), 'disabled')
+            data = json.loads((Path(self.temp.name)/'CAN-LAN-Reader/settings.json').read_text(encoding='utf-8'))
+            self.assertEqual(data['language'], language)
+        self.app.active = False
+
+    def test_saved_chinese_language_is_loaded(self):
+        self.app.language_choice.set('简体中文'); self.app.change_language()
+        self.app.close()
+        self.app = App(); self.app.withdraw()
+        self.assertEqual(self.app.language, 'zh_CN')
+        self.assertEqual(self.app.button['text'], '连接')
+        self.assertEqual(self.app.status.get(), '已断开')
